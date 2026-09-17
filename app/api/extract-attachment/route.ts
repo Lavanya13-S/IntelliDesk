@@ -71,25 +71,21 @@ function printExtractionReport(r: ExtractionReport): void {
   console.log('╚══════════════════════════════════════════════════════════════╝\n');
 }
 
-// ─── PDF Extraction: Stage 1 — pdfjs-dist ─────────────────────────────────────
-// ROOT CAUSE NOTE:
-// pdf-parse v2.4.5 (installed) exports an object { PDFParse, AbortException, ... }
-// NOT a callable function. require('pdf-parse') returns typeof === "object", causing
-// TypeError when called as a function. The old catch block silently swallowed this
-// TypeError and returned the generic fallback string.
+// ─── PDF Extraction: Stage 1 — pdfjs-dist legacy build ──────────────────────
+// PRODUCTION FIX (Vercel):
+// pdfjs-dist v4 main build requires GlobalWorkerOptions.workerSrc to be set.
+// Setting it to '' triggers "Setting up fake worker failed" in production.
+// Setting it to the .mjs path fails because Vercel cannot load the worker file
+// as a browser Worker or Node.js worker_thread in all Lambda configurations.
 //
-// Fix: Use pdfjs-dist (already installed, v4.9.155, confirmed working in Node.js).
-// pdfjs-dist requires a workerSrc to be set; use the bundled worker .mjs file.
+// SOLUTION: Use pdfjs-dist/legacy/build/pdf.mjs — the legacy build runs the
+// entire PDF parser synchronously in the same Node.js thread with NO worker
+// required. This is the officially supported approach for server-side Node.js.
 async function extractPDFWithPdfjs(buffer: Buffer): Promise<{ text: string; pages: number; error?: string }> {
-  // Dynamic import ensures pdfjs-dist is treated as external by webpack
-  // (set in next.config.js serverComponentsExternalPackages + externals)
-  const pdfjs = await import('pdfjs-dist');
-
-  // CRITICAL: In Node.js server-side (no browser), workerSrc must be set to
-  // an empty string. pdfjs-dist's legacy build handles parsing inline without
-  // a separate worker process. Setting the browser worker path causes
-  // "Cannot find module" errors in serverless environments.
-  pdfjs.GlobalWorkerOptions.workerSrc = '';
+  // Import the legacy build — no GlobalWorkerOptions.workerSrc needed.
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore — pdfjs-dist/legacy/build/pdf.mjs is not in TS types but exists at runtime
+  const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs' as string);
 
   // Load the PDF document — do NOT catch here, let real errors propagate
   const loadingTask = pdfjs.getDocument({
@@ -123,24 +119,31 @@ async function extractPDFWithPdfjs(buffer: Buffer): Promise<{ text: string; page
 }
 
 // ─── PDF Extraction: Stage 2 — Tesseract OCR (fallback for image-based PDFs) ──
+// PRODUCTION FIX (Vercel):
+// Tesseract.js requires WASM files (tesseract-core-relaxedsimd.wasm) that are
+// NOT available in the Vercel Lambda filesystem (/var/task/node_modules/tesseract.js-core/).
+// This causes ENOENT errors. We catch WASM/ENOENT errors specifically and return
+// empty string so the caller handles it gracefully rather than crashing the request.
 async function extractPDFWithOCR(buffer: Buffer, filename: string): Promise<{ text: string; error?: string }> {
-  // Tesseract can process image buffers directly but not PDFs.
-  // For image-based PDFs, we attempt OCR directly on the buffer.
-  // In production, this would require pdf-to-image conversion (e.g. pdftoppm).
-  // Here we surface a clear message that OCR requires image conversion.
-  const Tesseract = await import('tesseract.js');
   try {
+    const Tesseract = await import('tesseract.js');
     const { data } = await Tesseract.recognize(buffer, 'eng', {
       logger: () => {},
     });
     const text = data.text.trim();
     return { text };
   } catch (ocrErr: any) {
-    // Tesseract cannot process raw PDF binary — this is expected.
-    // Return empty string so the caller knows OCR also failed.
+    // Tesseract cannot process raw PDF binary, and in Vercel the WASM file
+    // is not present — both are expected. Return empty so caller handles gracefully.
+    const isWasmOrEnv = ocrErr.message?.includes('ENOENT') ||
+                        ocrErr.message?.includes('.wasm') ||
+                        ocrErr.message?.includes('worker') ||
+                        ocrErr.message?.includes('tesseract');
     return {
       text: '',
-      error: `Tesseract OCR on raw PDF failed: ${ocrErr.message}`,
+      error: isWasmOrEnv
+        ? `Tesseract OCR unavailable in this environment: ${ocrErr.message}`
+        : `Tesseract OCR on raw PDF failed: ${ocrErr.message}`,
     };
   }
 }

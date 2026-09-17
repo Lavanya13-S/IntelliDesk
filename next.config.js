@@ -22,14 +22,16 @@ const nextConfig = {
   },
   webpack: (config, { isServer }) => {
     if (isServer) {
-      // Avoid bundling native modules that should be required at runtime
+      // Avoid bundling native modules that should be required at runtime.
+      // Use /^pdfjs-dist/ regex to match ALL pdfjs-dist subpath imports,
+      // including pdfjs-dist/legacy/build/pdf.mjs (used for serverless PDF extraction).
       config.externals = [
         ...(config.externals || []),
         'canvas',
         'bufferutil',
         'utf-8-validate',
         'pdf-parse',
-        'pdfjs-dist',
+        /^pdfjs-dist/,
       ];
     }
     return config;

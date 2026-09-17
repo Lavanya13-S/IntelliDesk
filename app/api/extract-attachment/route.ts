@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
+// ─── Production runtime config ────────────────────────────────────────────────
+// CRITICAL: Without these, Vercel/Netlify truncate execution at 10s.
+// PDF extraction + N Gemini embedding calls easily exceeds 10s on real files.
+export const runtime = 'nodejs';
+export const maxDuration = 60; // seconds — max allowed on Vercel Pro / Netlify
+export const dynamic = 'force-dynamic';
+
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -78,9 +85,11 @@ async function extractPDFWithPdfjs(buffer: Buffer): Promise<{ text: string; page
   // (set in next.config.js serverComponentsExternalPackages + externals)
   const pdfjs = await import('pdfjs-dist');
 
-  // CRITICAL: pdfjs-dist v4 requires a workerSrc even in Node.js.
-  // Setting it to the bundled worker .mjs path satisfies the requirement.
-  pdfjs.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/build/pdf.worker.mjs';
+  // CRITICAL: In Node.js server-side (no browser), workerSrc must be set to
+  // an empty string. pdfjs-dist's legacy build handles parsing inline without
+  // a separate worker process. Setting the browser worker path causes
+  // "Cannot find module" errors in serverless environments.
+  pdfjs.GlobalWorkerOptions.workerSrc = '';
 
   // Load the PDF document — do NOT catch here, let real errors propagate
   const loadingTask = pdfjs.getDocument({
@@ -558,37 +567,57 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // ── Chunk + Embed ───────────────────────────────────────────────────────────
+    // ── Chunk + Embed (concurrent batches of 5) ────────────────────────────────
+    // Sequential embedding was causing production timeouts (10s default limit).
+    // Processing chunks in parallel batches of 5 cuts wall-clock time by ~5×
+    // and stays well within the 60s maxDuration for typical documents.
     const geminiKey = await getGeminiKey();
     const chunks = chunkText(extractedText);
     let embeddedChunks = 0;
     let storedChunks = 0;
     let firstInsertError = '';
 
-    for (let i = 0; i < chunks.length; i++) {
-      let embedding: number[] | null = null;
-      if (geminiKey) {
-        embedding = await generateEmbedding(chunks[i], geminiKey);
-        if (embedding) embeddedChunks++;
-        // Rate-limit protection
-        if (i > 0 && i % 5 === 0) {
-          await new Promise((r) => setTimeout(r, 300));
+    const BATCH_SIZE = 5;
+    for (let batchStart = 0; batchStart < chunks.length; batchStart += BATCH_SIZE) {
+      const batch = chunks.slice(batchStart, batchStart + BATCH_SIZE);
+
+      // Generate embeddings for this batch concurrently
+      const embeddings: (number[] | null)[] = await Promise.all(
+        batch.map((chunk) =>
+          geminiKey ? generateEmbedding(chunk, geminiKey) : Promise.resolve(null)
+        )
+      );
+
+      // Insert all chunks in this batch concurrently
+      const insertResults = await Promise.all(
+        batch.map((chunk, j) => {
+          const i = batchStart + j;
+          const embedding = embeddings[j];
+          return supabase.from('document_chunks').insert({
+            document_id: docData.id,
+            chunk_text: chunk,
+            chunk_index: i,
+            embedding,
+            metadata: { source_type: fileType, filename },
+          });
+        })
+      );
+
+      for (let j = 0; j < insertResults.length; j++) {
+        const { error: chunkError } = insertResults[j];
+        const embedding = embeddings[j];
+        if (chunkError) {
+          console.error(`[extract-attachment] chunk ${batchStart + j} insert failed:`, chunkError.message, chunkError.details);
+          if (!firstInsertError) firstInsertError = chunkError.message;
+        } else {
+          storedChunks++;
+          if (embedding) embeddedChunks++;
         }
       }
 
-      const { error: chunkError } = await supabase.from('document_chunks').insert({
-        document_id: docData.id,
-        chunk_text: chunks[i],
-        chunk_index: i,
-        embedding,
-        metadata: { source_type: fileType, filename },
-      });
-
-      if (chunkError) {
-        console.error(`[extract-attachment] chunk ${i} insert failed:`, chunkError.message, chunkError.details);
-        if (!firstInsertError) firstInsertError = chunkError.message;
-      } else {
-        storedChunks++;
+      // Small inter-batch pause to avoid Gemini rate limits on large documents
+      if (batchStart + BATCH_SIZE < chunks.length) {
+        await new Promise((r) => setTimeout(r, 200));
       }
     }
 

@@ -1,0 +1,831 @@
+﻿ID: TC003
+Expected Intent:    Sick Leave Request
+Actual Intent:      General Inquiry
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Sick Leave Request", got "General Inquiry"
+  Γ£ù PRIORITY: expected "medium", got "low"
+  Γ£ù DECISION: expected "APPROVAL_REQUIRED", got "HUMAN_REVIEW"
+ID: TC004
+Expected Intent:    Maternity / Parental Leave
+Actual Intent:      Maternity / Paternity Leave Request
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Maternity / Parental Leave", got "Maternity / Paternity Leave Request"
+  Γ£ù PRIORITY: expected "low", got "medium"
+ID: TC005
+Expected Intent:    HR Policy Query
+Actual Intent:      PTO / Paid Time Off Request
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "HR Policy Query", got "PTO / Paid Time Off Request"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "APPROVAL_REQUIRED"
+ID: TC007
+Expected Intent:    Network / WiFi Issue
+Actual Intent:      IT General Support
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Network / WiFi Issue", got "IT General Support"
+ID: TC008
+Expected Intent:    Leave / Time Off Request
+Actual Intent:      PTO / Paid Time Off Request
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Leave / Time Off Request", got "PTO / Paid Time Off Request"
+  Γ£ù PRIORITY: expected "medium", got "low"
+ID: TC010
+Expected Intent:    Leave / Time Off Request
+Actual Intent:      PTO / Paid Time Off Request
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Leave / Time Off Request", got "PTO / Paid Time Off Request"
+  Γ£ù PRIORITY: expected "medium", got "low"
+ID: TC011
+Expected Intent:    Maternity / Parental Leave
+Actual Intent:      Maternity / Paternity Leave Request
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Maternity / Parental Leave", got "Maternity / Paternity Leave Request"
+  Γ£ù PRIORITY: expected "low", got "medium"
+ID: TC016
+Expected Intent:    Salary Not Received
+Actual Intent:      Missing Salary Payment
+Expected Dept:      HR
+Actual Dept:        Finance
+Expected Priority:  critical
+Actual Priority:    high
+Expected Risk:      Critical
+Actual Risk:        High
+Expected Decision:  ESCALATE
+Actual Decision:    ESCALATE
+  Γ£ù INTENT: expected "Salary Not Received", got "Missing Salary Payment"
+  Γ£ù DEPT: expected "HR", got "Finance"
+  Γ£ù PRIORITY: expected "critical", got "high"
+  Γ£ù RISK: expected "Critical", got "High"
+ID: TC017
+Expected Intent:    Incorrect Salary / Payroll Discrepancy
+Actual Intent:      Payslip / Pay Stub Issue
+Expected Dept:      Finance
+Actual Dept:        Finance
+Expected Priority:  high
+Actual Priority:    medium
+Expected Risk:      High
+Actual Risk:        Medium
+Expected Decision:  ESCALATE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Incorrect Salary / Payroll Discrepancy", got "Payslip / Pay Stub Issue"
+  Γ£ù PRIORITY: expected "high", got "medium"
+  Γ£ù DECISION: expected "ESCALATE", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "High", got "Medium"
+ID: TC018
+Expected Intent:    Payslip / Pay Stub Request
+Actual Intent:      Payslip / Pay Stub Issue
+Expected Dept:      HR
+Actual Dept:        Finance
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Medium
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Payslip / Pay Stub Request", got "Payslip / Pay Stub Issue"
+  Γ£ù DEPT: expected "HR", got "Finance"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "Low", got "Medium"
+ID: TC019
+Expected Intent:    Incorrect Salary / Payroll Discrepancy
+Actual Intent:      Promotion / Role Change Query
+Expected Dept:      Finance
+Actual Dept:        HR
+Expected Priority:  high
+Actual Priority:    medium
+Expected Risk:      High
+Actual Risk:        Low
+Expected Decision:  ESCALATE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Incorrect Salary / Payroll Discrepancy", got "Promotion / Role Change Query"
+  Γ£ù DEPT: expected "Finance", got "HR"
+  Γ£ù PRIORITY: expected "high", got "medium"
+  Γ£ù DECISION: expected "ESCALATE", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "High", got "Low"
+ID: TC021
+Expected Intent:    Incorrect Salary / Payroll Discrepancy
+Actual Intent:      Overtime / Compensatory Time Query
+Expected Dept:      Finance
+Actual Dept:        HR
+Expected Priority:  high
+Actual Priority:    low
+Expected Risk:      High
+Actual Risk:        Low
+Expected Decision:  ESCALATE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Incorrect Salary / Payroll Discrepancy", got "Overtime / Compensatory Time Query"
+  Γ£ù DEPT: expected "Finance", got "HR"
+  Γ£ù PRIORITY: expected "high", got "low"
+  Γ£ù DECISION: expected "ESCALATE", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "High", got "Low"
+ID: TC022
+Expected Intent:    Payslip / Pay Stub Request
+Actual Intent:      Payslip / Pay Stub Issue
+Expected Dept:      HR
+Actual Dept:        Finance
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Medium
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Payslip / Pay Stub Request", got "Payslip / Pay Stub Issue"
+  Γ£ù DEPT: expected "HR", got "Finance"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "Low", got "Medium"
+ID: TC023
+Expected Intent:    Incorrect Salary / Payroll Discrepancy
+Actual Intent:      General Inquiry
+Expected Dept:      Finance
+Actual Dept:        HR
+Expected Priority:  high
+Actual Priority:    low
+Expected Risk:      High
+Actual Risk:        Low
+Expected Decision:  ESCALATE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Incorrect Salary / Payroll Discrepancy", got "General Inquiry"
+  Γ£ù DEPT: expected "Finance", got "HR"
+  Γ£ù PRIORITY: expected "high", got "low"
+  Γ£ù DECISION: expected "ESCALATE", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "High", got "Low"
+ID: TC024
+Expected Intent:    Employee Offboarding Request
+Actual Intent:      Pension / Provident Fund Query
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  HUMAN_REVIEW
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Employee Offboarding Request", got "Pension / Provident Fund Query"
+ID: TC025
+Expected Intent:    Employee Offboarding Request
+Actual Intent:      Employee Offboarding / Exit Process
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Medium
+Expected Decision:  HUMAN_REVIEW
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Employee Offboarding Request", got "Employee Offboarding / Exit Process"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "HUMAN_REVIEW", got "DEPARTMENT_PROCESSING"
+  Γ£ù RISK: expected "Low", got "Medium"
+ID: TC026
+Expected Intent:    Workplace Harassment Complaint
+Actual Intent:      Employee Grievance
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  critical
+Actual Priority:    high
+Expected Risk:      Critical
+Actual Risk:        Critical
+Expected Decision:  ESCALATE
+Actual Decision:    ESCALATE
+  Γ£ù INTENT: expected "Workplace Harassment Complaint", got "Employee Grievance"
+  Γ£ù PRIORITY: expected "critical", got "high"
+ID: TC027
+Expected Intent:    Employee Onboarding Request
+Actual Intent:      Employee Onboarding
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Employee Onboarding Request", got "Employee Onboarding"
+ID: TC028
+Expected Intent:    HR Policy Query
+Actual Intent:      Employee Benefits Query
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    AUTO_RESOLVE
+  Γ£ù INTENT: expected "HR Policy Query", got "Employee Benefits Query"
+ID: TC029
+Expected Intent:    HR Policy Query
+Actual Intent:      Promotion / Role Change Query
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "HR Policy Query", got "Promotion / Role Change Query"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "HUMAN_REVIEW"
+ID: TC030
+Expected Intent:    Incorrect Salary / Payroll Discrepancy
+Actual Intent:      Company Policy Query
+Expected Dept:      Finance
+Actual Dept:        HR
+Expected Priority:  high
+Actual Priority:    low
+Expected Risk:      High
+Actual Risk:        Low
+Expected Decision:  ESCALATE
+Actual Decision:    AUTO_RESOLVE
+  Γ£ù INTENT: expected "Incorrect Salary / Payroll Discrepancy", got "Company Policy Query"
+  Γ£ù DEPT: expected "Finance", got "HR"
+  Γ£ù PRIORITY: expected "high", got "low"
+  Γ£ù DECISION: expected "ESCALATE", got "AUTO_RESOLVE"
+  Γ£ù RISK: expected "High", got "Low"
+ID: TC031
+Expected Intent:    HR Policy Query
+Actual Intent:      Promotion / Role Change Query
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "HR Policy Query", got "Promotion / Role Change Query"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "HUMAN_REVIEW"
+ID: TC032
+Expected Intent:    Employee Benefits Query
+Actual Intent:      Budget / Financial Planning Query
+Expected Dept:      HR
+Actual Dept:        Finance
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Employee Benefits Query", got "Budget / Financial Planning Query"
+  Γ£ù DEPT: expected "HR", got "Finance"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "HUMAN_REVIEW"
+ID: TC040
+Expected Intent:    VPN / Remote Access Issue
+Actual Intent:      Hardware / Laptop Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  high
+Actual Priority:    high
+Expected Risk:      Medium
+Actual Risk:        High
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "VPN / Remote Access Issue", got "Hardware / Laptop Issue"
+  Γ£ù RISK: expected "Medium", got "High"
+ID: TC050
+Expected Intent:    Software Installation Request
+Actual Intent:      Desktop / Computer Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    high
+Expected Risk:      Low
+Actual Risk:        Medium
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Software Installation Request", got "Desktop / Computer Issue"
+  Γ£ù PRIORITY: expected "medium", got "high"
+  Γ£ù RISK: expected "Low", got "Medium"
+ID: TC054
+Expected Intent:    Cloud / SaaS Application Access
+Actual Intent:      Shared Drive / File Server Access
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Medium
+Actual Risk:        Medium
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Cloud / SaaS Application Access", got "Shared Drive / File Server Access"
+ID: TC056
+Expected Intent:    New User Account Setup
+Actual Intent:      Employee Onboarding
+Expected Dept:      IT
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "New User Account Setup", got "Employee Onboarding"
+  Γ£ù DEPT: expected "IT", got "HR"
+ID: TC057
+Expected Intent:    Password Reset
+Actual Intent:      MFA / Two-Factor Authentication Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  high
+Actual Priority:    high
+Expected Risk:      Medium
+Actual Risk:        Medium
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Password Reset", got "MFA / Two-Factor Authentication Issue"
+ID: TC058
+Expected Intent:    Access Revocation Request
+Actual Intent:      Email / Outlook Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  high
+Actual Priority:    high
+Expected Risk:      High
+Actual Risk:        Medium
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Access Revocation Request", got "Email / Outlook Issue"
+  Γ£ù RISK: expected "High", got "Medium"
+ID: TC059
+Expected Intent:    SharePoint / Intranet Access
+Actual Intent:      HR Policy Query
+Expected Dept:      IT
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    AUTO_RESOLVE
+  Γ£ù INTENT: expected "SharePoint / Intranet Access", got "HR Policy Query"
+  Γ£ù DEPT: expected "IT", got "HR"
+  Γ£ù PRIORITY: expected "medium", got "low"
+  Γ£ù DECISION: expected "DEPARTMENT_PROCESSING", got "AUTO_RESOLVE"
+ID: TC060
+Expected Intent:    Software License Request
+Actual Intent:      General Inquiry
+Expected Dept:      IT
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Software License Request", got "General Inquiry"
+  Γ£ù DEPT: expected "IT", got "HR"
+  Γ£ù PRIORITY: expected "medium", got "low"
+  Γ£ù DECISION: expected "APPROVAL_REQUIRED", got "HUMAN_REVIEW"
+ID: TC061
+Expected Intent:    Printer / Peripheral Issue
+Actual Intent:      Printer Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Printer / Peripheral Issue", got "Printer Issue"
+ID: TC073
+Expected Intent:    SAP Finance Module Issue
+Actual Intent:      Invoice / Finance Query
+Expected Dept:      Finance
+Actual Dept:        Finance
+Expected Priority:  high
+Actual Priority:    medium
+Expected Risk:      High
+Actual Risk:        Medium
+Expected Decision:  ESCALATE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "SAP Finance Module Issue", got "Invoice / Finance Query"
+  Γ£ù PRIORITY: expected "high", got "medium"
+  Γ£ù DECISION: expected "ESCALATE", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "High", got "Medium"
+ID: TC074
+Expected Intent:    Travel Expense Issue
+Actual Intent:      Expense Reimbursement
+Expected Dept:      Finance
+Actual Dept:        Finance
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Medium
+Actual Risk:        Medium
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Travel Expense Issue", got "Expense Reimbursement"
+ID: TC088
+Expected Intent:    Phishing / Suspicious Email
+Actual Intent:      Password Reset
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  critical
+Actual Priority:    high
+Expected Risk:      Critical
+Actual Risk:        Medium
+Expected Decision:  ESCALATE
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Phishing / Suspicious Email", got "Password Reset"
+  Γ£ù PRIORITY: expected "critical", got "high"
+  Γ£ù DECISION: expected "ESCALATE", got "DEPARTMENT_PROCESSING"
+  Γ£ù RISK: expected "Critical", got "Medium"
+ID: TC093
+Expected Intent:    Access Revocation Request
+Actual Intent:      General Inquiry
+Expected Dept:      IT
+Actual Dept:        HR
+Expected Priority:  high
+Actual Priority:    low
+Expected Risk:      High
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Access Revocation Request", got "General Inquiry"
+  Γ£ù DEPT: expected "IT", got "HR"
+  Γ£ù PRIORITY: expected "high", got "low"
+  Γ£ù DECISION: expected "DEPARTMENT_PROCESSING", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "High", got "Low"
+ID: TC121
+Expected Intent:    Emergency Leave Request
+Actual Intent:      General Inquiry
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    low
+Expected Risk:      Medium
+Actual Risk:        Low
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Emergency Leave Request", got "General Inquiry"
+  Γ£ù PRIORITY: expected "medium", got "low"
+  Γ£ù DECISION: expected "APPROVAL_REQUIRED", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "Medium", got "Low"
+ID: TC122
+Expected Intent:    Leave / Time Off Request
+Actual Intent:      Sick Leave Request
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  APPROVAL_REQUIRED
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Leave / Time Off Request", got "Sick Leave Request"
+ID: TC123
+Expected Intent:    HR Policy Query
+Actual Intent:      General Inquiry
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "HR Policy Query", got "General Inquiry"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "HUMAN_REVIEW"
+ID: TC125
+Expected Intent:    HR Policy Query
+Actual Intent:      Annual Leave Request
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "HR Policy Query", got "Annual Leave Request"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "APPROVAL_REQUIRED"
+ID: TC126
+Expected Intent:    Desktop / Computer Issue
+Actual Intent:      Keyboard / Mouse / Peripheral Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  high
+Actual Priority:    medium
+Expected Risk:      Medium
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Desktop / Computer Issue", got "Keyboard / Mouse / Peripheral Issue"
+  Γ£ù PRIORITY: expected "high", got "medium"
+  Γ£ù RISK: expected "Medium", got "Low"
+ID: TC129
+Expected Intent:    Keyboard / Mouse / Peripheral Issue
+Actual Intent:      Monitor / Display Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Keyboard / Mouse / Peripheral Issue", got "Monitor / Display Issue"
+ID: TC147
+Expected Intent:    Account Compromise / Unauthorized Access
+Actual Intent:      Password Reset
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  critical
+Actual Priority:    high
+Expected Risk:      Critical
+Actual Risk:        Medium
+Expected Decision:  ESCALATE
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Account Compromise / Unauthorized Access", got "Password Reset"
+  Γ£ù PRIORITY: expected "critical", got "high"
+  Γ£ù DECISION: expected "ESCALATE", got "DEPARTMENT_PROCESSING"
+  Γ£ù RISK: expected "Critical", got "Medium"
+ID: TC149
+Expected Intent:    Phishing / Suspicious Email
+Actual Intent:      Password Reset
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  high
+Actual Priority:    high
+Expected Risk:      High
+Actual Risk:        Medium
+Expected Decision:  ESCALATE
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Phishing / Suspicious Email", got "Password Reset"
+  Γ£ù DECISION: expected "ESCALATE", got "DEPARTMENT_PROCESSING"
+  Γ£ù RISK: expected "High", got "Medium"
+ID: TC153
+Expected Intent:    Office Maintenance Issue
+Actual Intent:      General Inquiry
+Expected Dept:      Facilities
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Office Maintenance Issue", got "General Inquiry"
+  Γ£ù DEPT: expected "Facilities", got "HR"
+  Γ£ù PRIORITY: expected "medium", got "low"
+  Γ£ù DECISION: expected "DEPARTMENT_PROCESSING", got "HUMAN_REVIEW"
+ID: TC156
+Expected Intent:    Company Policy Query
+Actual Intent:      Expense Reimbursement
+Expected Dept:      HR
+Actual Dept:        Finance
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Medium
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Company Policy Query", got "Expense Reimbursement"
+  Γ£ù DEPT: expected "HR", got "Finance"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "APPROVAL_REQUIRED"
+  Γ£ù RISK: expected "Low", got "Medium"
+ID: TC159
+Expected Intent:    Employee Onboarding Request
+Actual Intent:      New Employee IT Setup
+Expected Dept:      HR
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    high
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Employee Onboarding Request", got "New Employee IT Setup"
+  Γ£ù DEPT: expected "HR", got "IT"
+  Γ£ù PRIORITY: expected "medium", got "high"
+ID: TC161
+Expected Intent:    Account Lockout
+Actual Intent:      Password Reset
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  high
+Actual Priority:    high
+Expected Risk:      Medium
+Actual Risk:        Medium
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Account Lockout", got "Password Reset"
+ID: TC165
+Expected Intent:    Employee Benefits Query
+Actual Intent:      Insurance / Medical Benefits Query
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Medium
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Employee Benefits Query", got "Insurance / Medical Benefits Query"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "HUMAN_REVIEW"
+  Γ£ù RISK: expected "Low", got "Medium"
+ID: TC168
+Expected Intent:    Network / WiFi Issue
+Actual Intent:      Network / WiFi Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    high
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù PRIORITY: expected "medium", got "high"
+ID: TC170
+Expected Intent:    Salary Not Received
+Actual Intent:      Missing Salary Payment
+Expected Dept:      HR
+Actual Dept:        Finance
+Expected Priority:  critical
+Actual Priority:    high
+Expected Risk:      Critical
+Actual Risk:        High
+Expected Decision:  ESCALATE
+Actual Decision:    ESCALATE
+  Γ£ù INTENT: expected "Salary Not Received", got "Missing Salary Payment"
+  Γ£ù DEPT: expected "HR", got "Finance"
+  Γ£ù PRIORITY: expected "critical", got "high"
+  Γ£ù RISK: expected "Critical", got "High"
+ID: TC172
+Expected Intent:    New User Account Setup
+Actual Intent:      Email / Outlook Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    high
+Expected Risk:      Low
+Actual Risk:        Medium
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "New User Account Setup", got "Email / Outlook Issue"
+  Γ£ù PRIORITY: expected "medium", got "high"
+  Γ£ù RISK: expected "Low", got "Medium"
+ID: TC174
+Expected Intent:    Payslip / Pay Stub Request
+Actual Intent:      General Inquiry
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  AUTO_RESOLVE
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "Payslip / Pay Stub Request", got "General Inquiry"
+  Γ£ù DECISION: expected "AUTO_RESOLVE", got "HUMAN_REVIEW"
+ID: TC175
+Expected Intent:    Network / System Outage
+Actual Intent:      Database Access Request
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  critical
+Actual Priority:    critical
+Expected Risk:      Critical
+Actual Risk:        High
+Expected Decision:  ESCALATE
+Actual Decision:    APPROVAL_REQUIRED
+  Γ£ù INTENT: expected "Network / System Outage", got "Database Access Request"
+  Γ£ù DECISION: expected "ESCALATE", got "APPROVAL_REQUIRED"
+  Γ£ù RISK: expected "Critical", got "High"
+ID: TC176
+Expected Intent:    Employee Offboarding Request
+Actual Intent:      Employee Offboarding / Exit Process
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  low
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Medium
+Expected Decision:  HUMAN_REVIEW
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Employee Offboarding Request", got "Employee Offboarding / Exit Process"
+  Γ£ù PRIORITY: expected "low", got "medium"
+  Γ£ù DECISION: expected "HUMAN_REVIEW", got "DEPARTMENT_PROCESSING"
+  Γ£ù RISK: expected "Low", got "Medium"
+ID: TC178
+Expected Intent:    Printer / Peripheral Issue
+Actual Intent:      Printer Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Printer / Peripheral Issue", got "Printer Issue"
+ID: TC180
+Expected Intent:    Employee Onboarding Request
+Actual Intent:      Employee Onboarding
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Employee Onboarding Request", got "Employee Onboarding"
+ID: TC181
+Expected Intent:    HR Grievance
+Actual Intent:      Employee Grievance
+Expected Dept:      HR
+Actual Dept:        HR
+Expected Priority:  high
+Actual Priority:    high
+Expected Risk:      Medium
+Actual Risk:        Critical
+Expected Decision:  HUMAN_REVIEW
+Actual Decision:    ESCALATE
+  Γ£ù INTENT: expected "HR Grievance", got "Employee Grievance"
+  Γ£ù DECISION: expected "HUMAN_REVIEW", got "ESCALATE"
+  Γ£ù RISK: expected "Medium", got "Critical"
+ID: TC184
+Expected Intent:    SharePoint / Intranet Access
+Actual Intent:      General Inquiry
+Expected Dept:      IT
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    medium
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    HUMAN_REVIEW
+  Γ£ù INTENT: expected "SharePoint / Intranet Access", got "General Inquiry"
+  Γ£ù DEPT: expected "IT", got "HR"
+  Γ£ù DECISION: expected "DEPARTMENT_PROCESSING", got "HUMAN_REVIEW"
+ID: TC185
+Expected Intent:    Network / System Outage
+Actual Intent:      LAN / Wired Network Issue
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  critical
+Actual Priority:    medium
+Expected Risk:      Critical
+Actual Risk:        Low
+Expected Decision:  ESCALATE
+Actual Decision:    DEPARTMENT_PROCESSING
+  Γ£ù INTENT: expected "Network / System Outage", got "LAN / Wired Network Issue"
+  Γ£ù PRIORITY: expected "critical", got "medium"
+  Γ£ù DECISION: expected "ESCALATE", got "DEPARTMENT_PROCESSING"
+  Γ£ù RISK: expected "Critical", got "Low"

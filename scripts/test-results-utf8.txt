@@ -1,0 +1,84 @@
+﻿
+========================================
+CLASSIFICATION TEST RESULTS
+========================================
+Total:    185
+Passed:   182
+Failed:   3
+Pass Rate: 98.4%
+========================================
+
+FAILING TESTS:
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+ID: TC030
+Subject: Employee referral bonus not credited
+Body: I referred a candidate who joined 3 months ago. As per the company policy I should receive a referral bonus. The amount ...
+Expected Intent:    Incorrect Salary / Payroll Discrepancy
+Actual Intent:      Company Policy Query
+Expected Dept:      Finance
+Actual Dept:        HR
+Expected Priority:  high
+Actual Priority:    low
+Expected Risk:      High
+Actual Risk:        Low
+Expected Decision:  ESCALATE
+Actual Decision:    AUTO_RESOLVE
+Confidence:         0.550
+Reasoning:          Ambiguous between "Company Policy Query" and "Incorrect Salary / Payroll Discrepancy" ΓÇö selected top scorer
+FAILURES:
+  Γ£ù INTENT: expected "Incorrect Salary / Payroll Discrepancy", got "Company Policy Query"
+  Γ£ù DEPT: expected "Finance", got "HR"
+  Γ£ù PRIORITY: expected "high", got "low"
+  Γ£ù DECISION: expected "ESCALATE", got "AUTO_RESOLVE"
+  Γ£ù RISK: expected "High", got "Low"
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+ID: TC153
+Subject: Toilet on the 3rd floor is broken
+Body: The toilet in the men's restroom on the 3rd floor is not flushing properly. The flush mechanism seems broken. Can mainte...
+Expected Intent:    Office Maintenance Issue
+Actual Intent:      General Inquiry
+Expected Dept:      Facilities
+Actual Dept:        HR
+Expected Priority:  medium
+Actual Priority:    low
+Expected Risk:      Low
+Actual Risk:        Low
+Expected Decision:  DEPARTMENT_PROCESSING
+Actual Decision:    HUMAN_REVIEW
+Confidence:         0.450
+Reasoning:          No intent-specific signals found ΓÇö defaulting to General Inquiry
+FAILURES:
+  Γ£ù INTENT: expected "Office Maintenance Issue", got "General Inquiry"
+  Γ£ù DEPT: expected "Facilities", got "HR"
+  Γ£ù PRIORITY: expected "medium", got "low"
+  Γ£ù DECISION: expected "DEPARTMENT_PROCESSING", got "HUMAN_REVIEW"
+
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+ID: TC175
+Subject: Incident: production database unreachable
+Body: The production database server is unreachable. All business applications that rely on this database are down. This is a ...
+Expected Intent:    Network / System Outage
+Actual Intent:      Database Access Request
+Expected Dept:      IT
+Actual Dept:        IT
+Expected Priority:  critical
+Actual Priority:    critical
+Expected Risk:      Critical
+Actual Risk:        High
+Expected Decision:  ESCALATE
+Actual Decision:    APPROVAL_REQUIRED
+Confidence:         0.605
+Reasoning:          Ambiguous between "Database Access Request" and "Network / System Outage" ΓÇö selected top scorer
+FAILURES:
+  Γ£ù INTENT: expected "Network / System Outage", got "Database Access Request"
+  Γ£ù DECISION: expected "ESCALATE", got "APPROVAL_REQUIRED"
+  Γ£ù RISK: expected "Critical", got "High"
+
+
+========================================
+SUMMARY: 182/185 passed (98.4%)
+========================================
+
+

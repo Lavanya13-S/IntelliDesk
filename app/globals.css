@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Correct HSL-format shadcn tokens ── */
+    --background:         0 0% 100%;          /* #FFFFFF */
+    --foreground:         222 84% 5%;         /* near-black */
+
+    --card:               0 0% 100%;          /* #FFFFFF */
+    --card-foreground:    222 84% 5%;
+
+    --popover:            0 0% 100%;
+    --popover-foreground: 222 84% 5%;
+
+    --primary:            245 75% 59%;        /* #4F46E5 indigo-600 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary:          210 40% 96%;        /* light gray-blue */
+    --secondary-foreground: 222 47% 11%;
+
+    --muted:              210 40% 96%;
+    --muted-foreground:   215 16% 47%;        /* #6B7280 */
+
+    --accent:             210 40% 96%;
+    --accent-foreground:  222 47% 11%;
+
+    --destructive:        0 84% 60%;          /* red-500 */
+    --destructive-foreground: 0 0% 100%;
+
+    --border:             214 32% 91%;        /* #E5E7EB */
+    --input:              214 32% 91%;
+    --ring:               245 75% 59%;        /* indigo */
+
+    --chart-1:            245 75% 59%;        /* indigo */
+    --chart-2:            160 60% 45%;        /* emerald */
+    --chart-3:            38 92% 50%;         /* amber */
+    --chart-4:            0 84% 60%;          /* red */
+    --chart-5:            271 91% 65%;        /* violet */
+
+    --radius:             0.5rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-[#F8FAFC] text-foreground; }
+}
